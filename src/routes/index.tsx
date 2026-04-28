@@ -5,6 +5,7 @@ import { FeatureBar } from "@/components/FeatureBar";
 import { CategoryStrip } from "@/components/CategoryStrip";
 import { Brands } from "@/components/Brands";
 import { ProductGrid } from "@/components/ProductGrid";
+import { LatestArrivals } from "@/components/LatestArrivals";
 import { PromoSplit } from "@/components/PromoSplit";
 import { SiteFooter } from "@/components/SiteFooter";
 import { WhatsAppFab } from "@/components/WhatsAppFab";
@@ -32,8 +33,9 @@ function Index() {
       <SiteHeader />
       <main>
         <HeroSlider />
-        <FeatureBar />
         <CategoryStrip />
+        <LatestArrivals />
+        <FeatureBar />
         <ProductGrid />
         <PromoSplit />
         <Brands />

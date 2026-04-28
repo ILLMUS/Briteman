@@ -21,16 +21,16 @@ export function CategoryStrip() {
         <h2 className="font-display text-2xl font-bold mb-6 uppercase tracking-tight">
           Shop by Category
         </h2>
-        <div className="grid grid-cols-2 sm:grid-cols-5 gap-px bg-border border border-border">
+        <div className="grid grid-cols-3 sm:grid-cols-5 md:grid-cols-10 gap-px bg-border border border-border">
           {CATS.map(({ icon: Icon, label, slug }) => (
             <Link
               key={label}
               to="/category/$slug"
               params={{ slug }}
-              className="group bg-white p-5 flex flex-col items-center justify-center gap-2 hover:bg-brand-blue transition-colors"
+              className="group bg-white px-2 py-3 flex flex-col items-center justify-center gap-1.5 hover:bg-brand-blue transition-colors"
             >
-              <Icon className="w-7 h-7 text-brand-blue group-hover:text-white transition-colors" />
-              <span className="text-xs font-bold uppercase tracking-wide text-foreground group-hover:text-white">
+              <Icon className="w-5 h-5 text-brand-blue group-hover:text-white transition-colors" />
+              <span className="text-[10px] font-bold uppercase tracking-wide text-foreground group-hover:text-white text-center leading-tight">
                 {label}
               </span>
             </Link>

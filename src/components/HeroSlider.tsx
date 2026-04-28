@@ -45,7 +45,7 @@ export function HeroSlider() {
 
   return (
     <section className="relative w-full bg-brand-blue-dark overflow-hidden">
-      <div className="relative max-w-[1600px] mx-auto h-[460px] md:h-[560px]">
+      <div className="relative max-w-[1600px] mx-auto h-[340px] md:h-[400px]">
         {SLIDES.map((s, idx) => (
           <div
             key={idx}
@@ -61,20 +61,20 @@ export function HeroSlider() {
             />
             <div className={`absolute inset-0 ${s.accent === "red" ? "bg-gradient-to-r from-brand-red-dark/95 via-brand-red-dark/70 to-transparent" : "bg-gradient-to-r from-brand-blue-dark/95 via-brand-blue-dark/70 to-transparent"}`} />
 
-            <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-10 h-full flex items-center">
+            <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-10 h-full flex items-start pt-8 md:pt-10">
               <div className="max-w-xl text-white">
-                <div className={`inline-block px-3 py-1 mb-4 text-xs font-bold uppercase tracking-[0.2em] ${s.accent === "red" ? "bg-white text-brand-red" : "bg-brand-red text-white"}`}>
+                <div className={`inline-block px-2.5 py-0.5 mb-2 text-[10px] font-bold uppercase tracking-[0.2em] ${s.accent === "red" ? "bg-white text-brand-red" : "bg-brand-red text-white"}`}>
                   {s.eyebrow}
                 </div>
-                <h1 className="font-display text-4xl md:text-6xl font-bold leading-[1.05] mb-4">
+                <h1 className="font-display text-2xl md:text-4xl font-bold leading-[1.05] mb-2">
                   {s.title}
                 </h1>
-                <p className="text-base md:text-lg text-white/85 mb-7 max-w-md">{s.desc}</p>
-                <div className="flex flex-wrap gap-3">
-                  <a href="#products" className="inline-flex items-center gap-2 bg-white text-brand-blue px-7 py-3.5 font-bold uppercase text-sm tracking-wide hover:bg-brand-red hover:text-white transition-colors">
+                <p className="text-sm md:text-base text-white/85 mb-4 max-w-md line-clamp-2">{s.desc}</p>
+                <div className="flex flex-wrap gap-2">
+                  <a href="#products" className="inline-flex items-center gap-2 bg-white text-brand-blue px-5 py-2.5 font-bold uppercase text-xs tracking-wide hover:bg-brand-red hover:text-white transition-colors">
                     {s.cta}
                   </a>
-                  <a href={WHATSAPP} target="_blank" rel="noopener" className="inline-flex items-center gap-2 bg-whatsapp text-white px-7 py-3.5 font-bold uppercase text-sm tracking-wide hover:opacity-90 transition-opacity">
+                  <a href={WHATSAPP} target="_blank" rel="noopener" className="inline-flex items-center gap-2 bg-whatsapp text-white px-5 py-2.5 font-bold uppercase text-xs tracking-wide hover:opacity-90 transition-opacity">
                     {s.ctaAlt}
                   </a>
                 </div>

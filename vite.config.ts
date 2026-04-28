@@ -1,10 +1,10 @@
-import { defineConfig } from "@lovable.dev/vite-tanstack-config";
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+import tsconfigPaths from 'vite-tsconfig-paths'
 
 export default defineConfig({
-  vite: {
-    build: {
-      outDir: "dist"
-    },
-    ssr: false
+  plugins: [react(), tsconfigPaths()],
+  build: {
+    outDir: 'dist'
   }
-});
+})

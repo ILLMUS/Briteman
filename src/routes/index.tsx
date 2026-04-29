@@ -33,8 +33,8 @@ function Index() {
       <SiteHeader />
       <main>
         <HeroSlider />
-        <CategoryStrip />
         <LatestArrivals />
+        <CategoryStrip />
         <FeatureBar />
         <ProductGrid />
         <PromoSplit />

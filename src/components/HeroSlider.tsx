@@ -45,7 +45,7 @@ export function HeroSlider() {
 
   return (
     <section className="relative w-full bg-brand-blue-dark overflow-hidden">
-      <div className="relative max-w-[1600px] mx-auto h-[340px] md:h-[400px]">
+      <div className="relative max-w-[1600px] mx-auto h-[260px] md:h-[320px]">
         {SLIDES.map((s, idx) => (
           <div
             key={idx}
@@ -54,27 +54,27 @@ export function HeroSlider() {
             <img
               src={s.img}
               alt={s.title}
-              className="absolute inset-0 w-full h-full object-cover"
+              className="absolute inset-0 w-full h-full object-cover object-center opacity-70"
               loading={idx === 0 ? "eager" : "lazy"}
               width={1600}
               height={900}
             />
-            <div className={`absolute inset-0 ${s.accent === "red" ? "bg-gradient-to-r from-brand-red-dark/95 via-brand-red-dark/70 to-transparent" : "bg-gradient-to-r from-brand-blue-dark/95 via-brand-blue-dark/70 to-transparent"}`} />
+            <div className={`absolute inset-0 ${s.accent === "red" ? "bg-gradient-to-r from-brand-red-dark/95 via-brand-red-dark/75 to-brand-red-dark/30" : "bg-gradient-to-r from-brand-blue-dark/95 via-brand-blue-dark/75 to-brand-blue-dark/30"}`} />
 
-            <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-10 h-full flex items-start pt-8 md:pt-10">
+            <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-10 h-full flex items-center">
               <div className="max-w-xl text-white">
-                <div className={`inline-block px-2.5 py-0.5 mb-2 text-[10px] font-bold uppercase tracking-[0.2em] ${s.accent === "red" ? "bg-white text-brand-red" : "bg-brand-red text-white"}`}>
+                <div className={`inline-block px-3 py-1 mb-3 text-[10px] sm:text-[11px] md:text-xs font-bold uppercase tracking-[0.22em] leading-none ${s.accent === "red" ? "bg-white text-brand-red" : "bg-brand-red text-white"}`}>
                   {s.eyebrow}
                 </div>
-                <h1 className="font-display text-2xl md:text-4xl font-bold leading-[1.05] mb-2">
+                <h1 className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-[2.75rem] font-bold leading-[1.1] tracking-tight mb-3 md:mb-4">
                   {s.title}
                 </h1>
-                <p className="text-sm md:text-base text-white/85 mb-4 max-w-md line-clamp-2">{s.desc}</p>
-                <div className="flex flex-wrap gap-2">
-                  <a href="#products" className="inline-flex items-center gap-2 bg-white text-brand-blue px-5 py-2.5 font-bold uppercase text-xs tracking-wide hover:bg-brand-red hover:text-white transition-colors">
+                <p className="text-sm md:text-base text-white/85 mb-5 md:mb-6 max-w-md leading-relaxed line-clamp-2">{s.desc}</p>
+                <div className="flex flex-wrap gap-3">
+                  <a href="#products" className="inline-flex items-center gap-2 bg-white text-brand-blue px-5 py-2.5 font-bold uppercase text-[11px] tracking-[0.1em] hover:bg-brand-red hover:text-white transition-colors">
                     {s.cta}
                   </a>
-                  <a href={WHATSAPP} target="_blank" rel="noopener" className="inline-flex items-center gap-2 bg-whatsapp text-white px-5 py-2.5 font-bold uppercase text-xs tracking-wide hover:opacity-90 transition-opacity">
+                  <a href={WHATSAPP} target="_blank" rel="noopener" className="inline-flex items-center gap-2 bg-whatsapp text-white px-5 py-2.5 font-bold uppercase text-[11px] tracking-[0.1em] hover:opacity-90 transition-opacity">
                     {s.ctaAlt}
                   </a>
                 </div>

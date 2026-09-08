@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /cart
+Disallow: /orders
+Disallow: /auth
+
+Sitemap: https://britemanservices.com/sitemap.xml
+

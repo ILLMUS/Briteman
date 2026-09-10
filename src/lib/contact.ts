@@ -3,8 +3,8 @@ export const CONTACT = {
   brandFull: "Briteman Services",
   brandLegal: "Briteman Services",
   tagline: "Eswatini's Trusted IT & Electronics Store",
-  phones: ["+268 7662 3733", "+268 7662 3730", "+268 7976 2221", "+268 3450 1703"],
-  whatsappNumber: "26876623733",
+  phones: ["+268 7882 8760", "+268 7662 3730", "+268 7976 2221", "+268 3450 1703"],
+  whatsappNumber: "26878828760",
   email: "ajapresd@gmail.com",
   website: "www.britemanservices.com",
   // Primary (kept for backwards compatibility with older references)
@@ -20,7 +20,7 @@ export const CONTACT = {
       line2: "Plot 305, Somhlolo Road",
       city: "Mbabane, Eswatini",
       mapQuery: "LM+Building,+Plot+305,+Somhlolo+Road,+Mbabane,+Eswatini",
-      phones: ["+268 7662 3733", "+268 7662 3730", "+268 7976 2221", "+268 3450 1703"],
+      phones: ["+268 7882 8760", "+268 7662 3730", "+268 7976 2221", "+268 3450 1703"],
     },
     {
       name: "Manzini Branch",
@@ -28,7 +28,7 @@ export const CONTACT = {
       line2: "Ground Floor No. 9, Near Satellite Bus Rank",
       city: "Manzini, Eswatini",
       mapQuery: "Hyatt+Building+Complex,+217+Maphaka+Street,+Manzini,+Eswatini",
-      phones: ["+268 7662 3733", "+268 7888 2850", "+268 7928 8898"],
+      phones: ["+268 7882 8760", "+268 7888 2850", "+268 7928 8898"],
     },
   ],
   hours: [

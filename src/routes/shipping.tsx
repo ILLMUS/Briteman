@@ -142,8 +142,8 @@ function ShippingPage() {
                   Contact us to confirm stock, arrange a courier, or get a custom delivery quote for large orders within Mbabane or Manzini.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4">
-                  <a href="tel:+26876623733" className="text-brand-blue hover:text-brand-red transition-colors font-medium">
-                    +268 7662 3733
+                  <a href="tel:+26878828760" className="text-brand-blue hover:text-brand-red transition-colors font-medium">
+                    +268 7882 8760 
                   </a>
                   <a href="mailto:ajapresd@gmail.com" className="text-brand-blue hover:text-brand-red transition-colors font-medium">
                     ajapresd@gmail.com

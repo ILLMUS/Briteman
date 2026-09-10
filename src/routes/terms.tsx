@@ -41,7 +41,7 @@ const sections = [
   },
   {
     title: "6. Payment",
-    body: `Payment terms are agreed at checkout or via WhatsApp. Orders are prepared once payment has been received and confirmed. We accept the payment methods displayed during the order process.`,
+    body: `Payment terms are agreed via WhatsApp. Orders are prepared once payment has been received and confirmed. We accept the payment methods displayed during the order process.`,
   },
   {
     title: "7. Delivery and risk",

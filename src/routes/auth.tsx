@@ -28,8 +28,8 @@ export const Route = createFileRoute("/auth")({
 
   head: () => ({
     meta: [
-      { title: "Sign in — Brightman Services" },
-      { name: "description", content: "Sign in or create your Brightman Services account." },
+      { title: "Sign in — Briteman Services" },
+      { name: "description", content: "Sign in or create your Briteman Services account." },
     ],
   }),
   component: AuthPage,
@@ -138,7 +138,7 @@ function AuthPage() {
             {isSignup ? "Create your account" : "Welcome back"}
           </h1>
           <p className="text-sm text-muted-foreground mb-6">
-            {isSignup ? "Sign up to track orders and save favourites." : "Sign in to your Brightman account."}
+            {isSignup ? "Sign up to track orders and save favourites." : "Sign in to your Briteman account."}
           </p>
 
           <form onSubmit={handleSubmit} className="space-y-4">

@@ -7,7 +7,7 @@ export function WhatsAppFab() {
   const { name: branch } = useBranch();
   const short = branch.replace(" Branch", "");
   const href =
-    "https://wa.me/26876623733?text=" +
+    "https://wa.me/26878828760?text=" +
     encodeURIComponent(
       `Hi Briteman Services (${short}, Eswatini), I'd like to place an order.`,
     );

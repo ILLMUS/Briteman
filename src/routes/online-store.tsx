@@ -8,9 +8,9 @@ export const Route = createFileRoute("/online-store")({
   head: () => ({
     meta: [
       { title: "Shop Online 24/7 | Briteman Services Eswatini" },
-      { name: "description", content: "Browse, compare and buy laptops, smartphones and electronics online any time. Secure payments or finalize your order on WhatsApp." },
+      { name: "description", content: "Browse, compare and buy laptops, smartphones and electronics online any time. For secured payments finalize your order on WhatsApp." },
       { property: "og:title", content: "Online Store — Briteman Services" },
-      { property: "og:description", content: "Shop the latest tech anytime, anywhere with secure payments and fast WhatsApp ordering." },
+      { property: "og:description", content: "Shop the latest tech anytime, anywhere with fast WhatsApp ordering." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],

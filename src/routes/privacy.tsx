@@ -93,8 +93,8 @@ function PrivacyPage() {
                   <a href="mailto:ajapresd@gmail.com" className="inline-flex items-center gap-2 text-brand-blue hover:text-brand-red transition-colors">
                     <Mail className="w-4 h-4" /> ajapresd@gmail.com
                   </a>
-                  <a href="tel:+26876623733" className="inline-flex items-center gap-2 text-brand-blue hover:text-brand-red transition-colors">
-                    <Phone className="w-4 h-4" /> +268 7662 3733
+                  <a href="tel:+26878828760" className="inline-flex items-center gap-2 text-brand-blue hover:text-brand-red transition-colors">
+                    <Phone className="w-4 h-4" /> +268 7882 8760
                   </a>
                 </div>
               </div>

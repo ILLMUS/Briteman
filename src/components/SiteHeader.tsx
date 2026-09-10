@@ -97,12 +97,12 @@ export function SiteHeader() {
       <div className="bg-brand-blue-dark text-white text-xs">
         <div className="max-w-7xl mx-auto px-4 min-h-9 flex flex-wrap items-center justify-center gap-x-4 lg:justify-between">
           <div className="hidden sm:flex items-center gap-5">
-            <span className="flex items-center gap-1.5"><Phone className="w-3.5 h-3.5" /> +268 7662 3733</span>
+            <span className="flex items-center gap-1.5"><Phone className="w-3.5 h-3.5" /> +268 78828760</span>
             <span className="flex items-center gap-1.5"><Mail className="w-3.5 h-3.5" /> ajapresd@gmail.com</span>
           </div>
           <div className="flex flex-1 lg:flex-none items-center justify-evenly lg:justify-end gap-2 lg:gap-4 lg:ml-auto">
-            <span className="hidden md:inline">Free delivery within Mbabane on orders over E 7,500</span>
-            <span className="text-brand-red font-semibold tracking-wide whitespace-nowrap">SAME-DAY DISPATCH</span>
+            <span className="hidden md:inline">Free delivery within Mbabane and Manzini corridors </span>
+            <span className="text-brand-red font-semibold tracking-wide whitespace-nowrap">PLACE ORDER NOW</span>
 
             {/* Mobile quick actions */}
             <div className="flex lg:hidden flex-1 items-center justify-evenly gap-1 pl-2 border-l border-white/20">

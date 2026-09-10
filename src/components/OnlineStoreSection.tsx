@@ -20,7 +20,7 @@ export function OnlineStoreSection() {
           Shop the latest tech — anytime, anywhere.
         </h2>
         <p className="text-white/85 max-w-2xl mx-auto mb-8 leading-relaxed">
-          Browse, compare and buy from our full catalogue around the clock. Pay securely online or finalize
+          Browse, compare and buy from our full catalogue around the clock. To pay finalize
           your order on WhatsApp in seconds.
         </p>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-white/10 border border-white/10 max-w-3xl mx-auto mb-8">
@@ -32,7 +32,7 @@ export function OnlineStoreSection() {
           ))}
         </div>
         <a
-          href="#products"
+          href="/products"
           onClick={gate()}
           className="inline-block bg-white text-brand-blue px-8 py-3.5 text-xs font-bold uppercase tracking-wide hover:bg-brand-red hover:text-white transition-colors"
         >

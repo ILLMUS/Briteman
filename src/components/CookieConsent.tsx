@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Cookie, X } from "lucide-react";
 
-const STORAGE_KEY = "briteman-cookie-consent-v1";
+const STORAGE_KEY = "online-store-cookie-consent-v1";
 
 type ConsentValue = "all" | "essential" | null;
 
@@ -11,11 +11,12 @@ export function CookieConsent() {
 
   useEffect(() => {
     setMounted(true);
+
     try {
       const stored = localStorage.getItem(STORAGE_KEY) as ConsentValue;
       setConsent(stored);
     } catch {
-      // ignore
+      // Ignore storage errors
     }
   }, []);
 
@@ -23,50 +24,72 @@ export function CookieConsent() {
     try {
       localStorage.setItem(STORAGE_KEY, value);
     } catch {
-      // ignore
+      // Ignore storage errors
     }
+
     setConsent(value);
   };
 
   if (!mounted || consent) return null;
 
   return (
-    <div className="fixed bottom-4 left-4 right-4 z-50 md:left-auto md:right-6 md:bottom-6 md:max-w-md">
-      <div className="bg-brand-blue-dark text-white shadow-2xl border-l-4 border-brand-red p-5 relative">
+    <div className="fixed inset-x-4 bottom-4 z-50 sm:inset-x-auto sm:bottom-6 sm:right-6 sm:w-[390px]">
+      <div className="relative overflow-hidden rounded-2xl border border-black/[0.08] bg-white/95 p-5 shadow-[0_20px_60px_rgba(0,0,0,0.14)] backdrop-blur-xl sm:p-6">
+
+        {/* Close */}
         <button
+          type="button"
           onClick={() => save("essential")}
-          aria-label="Dismiss"
-          className="absolute top-2 right-2 text-white/60 hover:text-white"
+          aria-label="Close cookie notice"
+          className="absolute right-4 top-4 flex h-7 w-7 items-center justify-center rounded-full text-neutral-400 transition-colors hover:bg-neutral-100 hover:text-neutral-700"
         >
-          <X className="w-4 h-4" />
+          <X className="h-4 w-4" strokeWidth={2} />
         </button>
-        <div className="flex items-start gap-3">
-          <div className="bg-brand-red p-2 shrink-0">
-            <Cookie className="w-5 h-5 text-white" />
-          </div>
-          <div className="flex-1">
-            <h3 className="font-display font-bold text-sm uppercase tracking-wide mb-1">
-              We use cookies
-            </h3>
-            <p className="text-xs text-white/85 leading-relaxed mb-3">
-              Briteman Online Store uses cookies to keep you signed in, remember your cart,
-              and improve our service. Choose your preference below.
-            </p>
-            <div className="flex flex-wrap gap-2">
-              <button
-                onClick={() => save("all")}
-                className="bg-brand-red hover:bg-brand-red-dark text-white text-xs font-bold uppercase tracking-wide px-4 py-2 transition-colors"
-              >
-                Accept all
-              </button>
-              <button
-                onClick={() => save("essential")}
-                className="bg-white/10 hover:bg-white/20 text-white text-xs font-bold uppercase tracking-wide px-4 py-2 transition-colors"
-              >
-                Essential only
-              </button>
-            </div>
-          </div>
+
+        {/* Icon */}
+        <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-full bg-neutral-100">
+          <Cookie
+            className="h-5 w-5 text-neutral-700"
+            strokeWidth={1.8}
+          />
+        </div>
+
+        {/* Content */}
+        <div className="pr-6">
+          <h3 className="text-[15px] font-semibold tracking-[-0.01em] text-neutral-950">
+            Your privacy matters
+          </h3>
+
+          <p className="mt-2 text-[13px] leading-[1.6] text-neutral-500">
+            Online Store uses cookies to keep you signed in, remember your
+            cart and improve your shopping experience.
+          </p>
+        </div>
+
+        {/* Actions */}
+        <div className="mt-5 flex items-center gap-2">
+          <button
+            type="button"
+            onClick={() => save("all")}
+            className="flex-1 rounded-full bg-neutral-950 px-4 py-2.5 text-[12px] font-semibold text-white transition-all duration-200 hover:bg-neutral-800 active:scale-[0.98]"
+          >
+            Accept All
+          </button>
+
+          <button
+            type="button"
+            onClick={() => save("essential")}
+            className="flex-1 rounded-full border border-black/[0.08] bg-white px-4 py-2.5 text-[12px] font-semibold text-neutral-700 transition-all duration-200 hover:bg-neutral-50 active:scale-[0.98]"
+          >
+            Essential Only
+          </button>
+        </div>
+
+        {/* Subtle bottom detail */}
+        <div className="mt-4 text-center">
+          <span className="text-[10px] text-neutral-400">
+            You can change your preference at any time.
+          </span>
         </div>
       </div>
     </div>

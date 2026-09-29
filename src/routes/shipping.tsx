@@ -2,164 +2,378 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { WhatsAppFab } from "@/components/WhatsAppFab";
-import { Truck, MapPin, Clock, PackageCheck, Phone } from "lucide-react";
+import {
+  Truck,
+  MapPin,
+  Clock,
+  PackageCheck,
+  Phone,
+  ShoppingBag,
+} from "lucide-react";
 
 export const Route = createFileRoute("/shipping")({
   head: () => ({
     meta: [
-      { title: "Shipping & Delivery Policy | Briteman Services" },
-      { name: "description", content: "Delivery and pickup options for orders from Briteman Services in Mbabane and Manzini only." },
-      { property: "og:title", content: "Shipping & Delivery | Briteman Services" },
-      { property: "og:description", content: "Same-day dispatch, free delivery thresholds and pickup points in Mbabane and Manzini from Briteman Services." },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
+      {
+        title: "Delivery & Collection | Online Store",
+      },
+      {
+        name: "description",
+        content:
+          "Learn how delivery and collection work at Online Store. Order electronics online and arrange collection in Manzini or contact us to discuss delivery.",
+      },
+      {
+        property: "og:title",
+        content: "Delivery & Collection | Online Store",
+      },
+      {
+        property: "og:description",
+        content:
+          "Order online and arrange collection in Manzini. Contact Online Store for delivery options and order assistance.",
+      },
+      {
+        property: "og:type",
+        content: "website",
+      },
+      {
+        property: "og:site_name",
+        content: "Online Store",
+      },
+      {
+        name: "twitter:card",
+        content: "summary_large_image",
+      },
+      {
+        name: "twitter:title",
+        content: "Delivery & Collection | Online Store",
+      },
+      {
+        name: "twitter:description",
+        content:
+          "Order online, arrange collection in Manzini or contact Online Store about delivery options.",
+      },
     ],
   }),
+
   component: ShippingPage,
 });
 
-const deliveryZones = [
+const OPTIONS = [
   {
-    zone: "Mbabane",
-    areas: "Somhlolo Road, town centre and surrounding suburbs",
-    time: "Same day or next business day",
-    cost: "Free on orders over E 7,500",
+    icon: ShoppingBag,
+    title: "Order Online",
+    desc: "Browse our catalogue, select the products you need and place your order online.",
   },
   {
-    zone: "Manzini",
-    areas: "Hyatt Building Complex / Maphaka Street area and surrounding suburbs",
-    time: "1–2 business days",
-    cost: "Free on orders over E 7,500",
+    icon: PackageCheck,
+    title: "Order & Collect",
+    desc: "Arrange convenient collection from our Online Store location in Manzini.",
   },
-];
-
-const highlights = [
-  { icon: Truck, title: "Same-day dispatch", desc: "Orders confirmed before 14:00 are dispatched the same business day." },
-  { icon: MapPin, title: "Two delivery cities", desc: "Delivery and pickup available in Mbabane and Manzini only." },
-  { icon: Clock, title: "Realistic timelines", desc: "Delivery estimates are provided before you confirm your order." },
-  { icon: PackageCheck, title: "Tracked handover", desc: "You receive an order reference and status updates via WhatsApp." },
+  {
+    icon: Truck,
+    title: "Delivery Enquiries",
+    desc: "Contact our team to discuss delivery availability, timing and applicable charges for your order.",
+  },
+  {
+    icon: Clock,
+    title: "Order Updates",
+    desc: "We'll communicate with you regarding your order and the next steps before collection or delivery.",
+  },
 ];
 
 function ShippingPage() {
   return (
-    <div className="min-h-screen flex flex-col bg-background">
+    <div className="flex min-h-screen flex-col bg-background">
       <SiteHeader />
+
       <main className="flex-1">
-        <section className="bg-brand-blue-dark text-white py-16 md:py-20">
-          <div className="max-w-4xl mx-auto px-4 text-center">
-            <Truck className="w-12 h-12 mx-auto mb-4 text-brand-red" />
-            <h1 className="text-3xl md:text-5xl font-bold font-display mb-4">Shipping & Delivery</h1>
-            <p className="text-white/80 max-w-2xl mx-auto">
-              Fast, reliable delivery and pickup in Mbabane and Manzini only. Choose your preferred branch or have your order delivered straight to your door.
+        {/* Hero */}
+        <section className="border-b border-black/[0.07] bg-white py-16 md:py-20">
+          <div className="mx-auto max-w-3xl px-4 text-center sm:px-6">
+            <div className="mx-auto mb-5 flex h-11 w-11 items-center justify-center rounded-full bg-[#f5f5f7] text-[#1d1d1f]">
+              <Truck className="h-5 w-5" strokeWidth={1.8} />
+            </div>
+
+            <div className="mb-3 text-[10px] font-semibold uppercase tracking-[0.2em] text-brand-blue">
+              Delivery & Collection
+            </div>
+
+            <h1 className="text-3xl font-semibold leading-[1.08] tracking-[-0.04em] text-[#1d1d1f] md:text-5xl">
+              Order online.
+              <br />
+              Collect in Manzini.
+            </h1>
+
+            <p className="mx-auto mt-5 max-w-2xl text-sm leading-7 text-[#6e6e73] md:text-[15px]">
+              Shop your electronics online and choose the most convenient way
+              to receive your order. Collection is available from our Manzini
+              location, while delivery arrangements can be discussed with our
+              team.
             </p>
           </div>
         </section>
 
-        <section className="py-12 md:py-20">
-          <div className="max-w-6xl mx-auto px-4">
-            {/* Highlights */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-              {highlights.map((h) => (
-                <div key={h.title} className="bg-card border border-border p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow scroll-reveal">
-                  <div className="w-12 h-12 bg-brand-blue/10 rounded-lg flex items-center justify-center mb-4">
-                    <h.icon className="w-6 h-6 text-brand-blue" />
+        <section className="bg-[#f5f5f7] py-14 md:py-20">
+          <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+            {/* Options */}
+            <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+              {OPTIONS.map(({ icon: Icon, title, desc }) => (
+                <div
+                  key={title}
+                  className="group rounded-2xl border border-black/[0.07] bg-white p-6 transition-all duration-300 hover:-translate-y-0.5 hover:border-black/[0.11] hover:shadow-[0_18px_45px_-28px_rgba(0,0,0,0.3)]"
+                >
+                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#f5f5f7] text-[#1d1d1f] transition-colors duration-300 group-hover:bg-brand-blue group-hover:text-white">
+                    <Icon className="h-[18px] w-[18px]" strokeWidth={1.8} />
                   </div>
-                  <h3 className="font-bold font-display text-lg mb-2">{h.title}</h3>
-                  <p className="text-sm text-muted-foreground">{h.desc}</p>
+
+                  <h2 className="mt-5 text-[14px] font-semibold tracking-[-0.01em] text-[#1d1d1f]">
+                    {title}
+                  </h2>
+
+                  <p className="mt-2 text-[12px] leading-[1.65] text-[#86868b]">
+                    {desc}
+                  </p>
                 </div>
               ))}
             </div>
 
-            {/* Delivery table */}
-            <div className="overflow-hidden rounded-xl border border-border shadow-sm mb-12 scroll-reveal">
-              <div className="bg-brand-blue text-white px-6 py-4">
-                <h2 className="text-lg font-bold font-display">Delivery zones & estimates</h2>
-              </div>
-              <div className="overflow-x-auto">
-                <table className="w-full text-sm">
-                  <thead className="bg-secondary/70 text-left">
-                    <tr>
-                      <th className="px-6 py-3 font-semibold">Zone</th>
-                      <th className="px-6 py-3 font-semibold">Coverage</th>
-                      <th className="px-6 py-3 font-semibold">Estimated time</th>
-                      <th className="px-6 py-3 font-semibold">Delivery cost</th>
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y divide-border">
-                    {deliveryZones.map((z) => (
-                      <tr key={z.zone} className="hover:bg-secondary/30 transition-colors">
-                        <td className="px-6 py-4 font-bold text-foreground">{z.zone}</td>
-                        <td className="px-6 py-4 text-muted-foreground">{z.areas}</td>
-                        <td className="px-6 py-4 text-muted-foreground">{z.time}</td>
-                        <td className="px-6 py-4 text-muted-foreground">{z.cost}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
+            {/* Collection */}
+            <div className="mt-4 overflow-hidden rounded-3xl border border-black/[0.07] bg-white">
+              <div className="grid md:grid-cols-[0.9fr_1.1fr]">
+                <div className="border-b border-black/[0.07] p-7 sm:p-9 md:border-b-0 md:border-r">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#f5f5f7] text-[#1d1d1f]">
+                    <MapPin className="h-[18px] w-[18px]" strokeWidth={1.8} />
+                  </div>
+
+                  <div className="mt-5 text-[10px] font-semibold uppercase tracking-[0.2em] text-brand-blue">
+                    Collection
+                  </div>
+
+                  <h2 className="mt-2 text-2xl font-semibold tracking-[-0.025em] text-[#1d1d1f]">
+                    Collect in Manzini.
+                  </h2>
+
+                  <p className="mt-3 text-[12px] leading-6 text-[#86868b]">
+                    Place your order online and contact our team to arrange a
+                    convenient collection time from our Manzini location.
+                  </p>
+
+                  <div className="mt-6 rounded-2xl bg-[#f5f5f7] p-5">
+                    <div className="text-[10px] font-semibold uppercase tracking-[0.12em] text-[#1d1d1f]">
+                      Collection location
+                    </div>
+
+                    <div className="mt-2 flex items-start gap-3">
+                      <MapPin
+                        className="mt-0.5 h-4 w-4 shrink-0 text-brand-blue"
+                        strokeWidth={1.8}
+                      />
+
+                      <div>
+                        <p className="text-[13px] font-medium text-[#1d1d1f]">
+                          Online Store
+                        </p>
+                        <p className="mt-0.5 text-[11px] text-[#86868b]">
+                          Manzini, Eswatini
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="p-7 sm:p-9">
+                  <div className="text-[10px] font-semibold uppercase tracking-[0.2em] text-brand-blue">
+                    How it works
+                  </div>
+
+                  <h2 className="mt-2 text-2xl font-semibold tracking-[-0.025em] text-[#1d1d1f]">
+                    A simple ordering process.
+                  </h2>
+
+                  <div className="mt-7 space-y-6">
+                    <div className="flex gap-4">
+                      <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#1d1d1f] text-[10px] font-semibold text-white">
+                        1
+                      </div>
+
+                      <div>
+                        <h3 className="text-[13px] font-semibold text-[#1d1d1f]">
+                          Choose your products
+                        </h3>
+                        <p className="mt-1 text-[11px] leading-[1.6] text-[#86868b]">
+                          Browse phones, computers, TVs, appliances, audio,
+                          cameras, accessories and other products.
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="flex gap-4">
+                      <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#1d1d1f] text-[10px] font-semibold text-white">
+                        2
+                      </div>
+
+                      <div>
+                        <h3 className="text-[13px] font-semibold text-[#1d1d1f]">
+                          Place your order
+                        </h3>
+                        <p className="mt-1 text-[11px] leading-[1.6] text-[#86868b]">
+                          Submit your order online and our team will assist
+                          with confirming the order details.
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="flex gap-4">
+                      <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#1d1d1f] text-[10px] font-semibold text-white">
+                        3
+                      </div>
+
+                      <div>
+                        <h3 className="text-[13px] font-semibold text-[#1d1d1f]">
+                          Confirm collection or delivery
+                        </h3>
+                        <p className="mt-1 text-[11px] leading-[1.6] text-[#86868b]">
+                          We'll confirm the next steps with you, including
+                          collection arrangements or available delivery
+                          options.
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="flex gap-4">
+                      <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#1d1d1f] text-[10px] font-semibold text-white">
+                        4
+                      </div>
+
+                      <div>
+                        <h3 className="text-[13px] font-semibold text-[#1d1d1f]">
+                          Receive your order
+                        </h3>
+                        <p className="mt-1 text-[11px] leading-[1.6] text-[#86868b]">
+                          Collect your order in Manzini or receive it through
+                          the agreed delivery arrangement.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
 
-            {/* Policy text */}
-            <div className="max-w-4xl mx-auto">
-              <div className="space-y-8 scroll-reveal">
-                <div>
-                  <h2 className="text-xl md:text-2xl font-bold font-display mb-3">Order processing</h2>
-                  <p className="text-muted-foreground leading-relaxed">
-                    Orders placed through the website are prepared at the branch you selected (Mbabane or Manzini). You will receive a WhatsApp confirmation with your order reference and estimated ready/delivery time.
-                  </p>
+            {/* Delivery information */}
+            <div className="mt-4 rounded-3xl border border-black/[0.07] bg-white p-7 sm:p-9">
+              <div className="mx-auto max-w-3xl">
+                <div className="text-[10px] font-semibold uppercase tracking-[0.2em] text-brand-blue">
+                  Delivery Information
                 </div>
-                <div>
-                  <h2 className="text-xl md:text-2xl font-bold font-display mb-3">Pickup option</h2>
-                  <p className="text-muted-foreground leading-relaxed">
-                    You can collect your order in person from your selected branch. Bring your order reference and a form of identification. Collection is free regardless of order value.
-                  </p>
-                </div>
-                <div>
-                  <h2 className="text-xl md:text-2xl font-bold font-display mb-3">Delivery confirmation</h2>
-                  <p className="text-muted-foreground leading-relaxed">
-                    We contact you before dispatch and on the day of delivery. Please ensure someone is available to receive the package, or arrange an alternative with our team in advance.
-                  </p>
-                </div>
-                <div>
-                  <h2 className="text-xl md:text-2xl font-bold font-display mb-3">Delays and force majeure</h2>
-                  <p className="text-muted-foreground leading-relaxed">
-                    While we strive to meet every estimated timeline, delays may occur due to stock availability, weather, public holidays, or other events beyond our control. We will keep you informed.
-                  </p>
-                </div>
-                <div>
-                  <h2 className="text-xl md:text-2xl font-bold font-display mb-3">Other areas</h2>
-                  <p className="text-muted-foreground leading-relaxed">
-                    For now we only deliver to Mbabane and Manzini. If you are outside these cities, contact us and we will let you know as soon as delivery expands to your area.
-                  </p>
-                </div>
-              </div>
 
-              <div className="mt-12 p-6 md:p-8 bg-secondary/50 rounded-xl border border-border scroll-reveal">
-                <h2 className="text-xl font-bold font-display mb-4 flex items-center gap-2">
-                  <Phone className="w-5 h-5 text-brand-red" /> Need help with delivery?
+                <h2 className="mt-2 text-2xl font-semibold tracking-[-0.025em] text-[#1d1d1f]">
+                  Delivery arrangements
                 </h2>
-                <p className="text-muted-foreground mb-4">
-                  Contact us to confirm stock, arrange a courier, or get a custom delivery quote for large orders within Mbabane or Manzini.
-                </p>
-                <div className="flex flex-col sm:flex-row gap-4">
-                  <a href="tel:+26878828760" className="text-brand-blue hover:text-brand-red transition-colors font-medium">
-                    +268 7882 8760 
+
+                <div className="mt-6 space-y-6">
+                  <div>
+                    <h3 className="text-[13px] font-semibold text-[#1d1d1f]">
+                      Availability
+                    </h3>
+                    <p className="mt-2 text-[12px] leading-6 text-[#86868b]">
+                      Delivery availability depends on the order, product,
+                      destination and current delivery arrangements. Contact
+                      us before placing an order if you need delivery.
+                    </p>
+                  </div>
+
+                  <div>
+                    <h3 className="text-[13px] font-semibold text-[#1d1d1f]">
+                      Delivery cost
+                    </h3>
+                    <p className="mt-2 text-[12px] leading-6 text-[#86868b]">
+                      Any applicable delivery charge will be confirmed with
+                      you before your order is finalised.
+                    </p>
+                  </div>
+
+                  <div>
+                    <h3 className="text-[13px] font-semibold text-[#1d1d1f]">
+                      Delivery timing
+                    </h3>
+                    <p className="mt-2 text-[12px] leading-6 text-[#86868b]">
+                      Delivery timing will be communicated when your order is
+                      confirmed. Product availability, destination and other
+                      logistical factors may affect the estimated timeframe.
+                    </p>
+                  </div>
+
+                  <div>
+                    <h3 className="text-[13px] font-semibold text-[#1d1d1f]">
+                      Large or business orders
+                    </h3>
+                    <p className="mt-2 text-[12px] leading-6 text-[#86868b]">
+                      For larger orders, office equipment, school supplies or
+                      business requirements, contact our team to discuss
+                      delivery and collection arrangements.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Contact */}
+            <div className="mt-4 rounded-3xl border border-black/[0.07] bg-white p-7 sm:p-9">
+              <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
+                <div>
+                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#f5f5f7] text-[#1d1d1f]">
+                    <Phone className="h-[18px] w-[18px]" strokeWidth={1.8} />
+                  </div>
+
+                  <h2 className="mt-5 text-xl font-semibold tracking-[-0.02em] text-[#1d1d1f]">
+                    Need help with delivery?
+                  </h2>
+
+                  <p className="mt-2 max-w-xl text-[12px] leading-6 text-[#86868b]">
+                    Contact Online Store to confirm product availability,
+                    collection arrangements or delivery options for your order.
+                  </p>
+                </div>
+
+                <div className="flex flex-wrap gap-2">
+                  <a
+                    href="tel:76265725"
+                    className="inline-flex items-center justify-center rounded-full border border-black/[0.09] bg-white px-5 py-2.5 text-[11px] font-semibold text-[#1d1d1f] transition-colors hover:bg-[#f5f5f7]"
+                  >
+                    76265725
                   </a>
-                  <a href="mailto:ajapresd@gmail.com" className="text-brand-blue hover:text-brand-red transition-colors font-medium">
-                    ajapresd@gmail.com
+
+                  <a
+                    href="tel:76427025"
+                    className="inline-flex items-center justify-center rounded-full border border-black/[0.09] bg-white px-5 py-2.5 text-[11px] font-semibold text-[#1d1d1f] transition-colors hover:bg-[#f5f5f7]"
+                  >
+                    76427025
+                  </a>
+
+                  <a
+                    href="mailto:info@onlinestore.com"
+                    className="inline-flex items-center justify-center rounded-full bg-[#1d1d1f] px-5 py-2.5 text-[11px] font-semibold text-white transition-colors hover:bg-brand-blue"
+                  >
+                    Email Us
                   </a>
                 </div>
               </div>
             </div>
 
+            {/* CTA */}
             <div className="mt-10 text-center">
-              <Link to="/" className="inline-flex items-center justify-center rounded-md bg-primary px-6 py-3 text-sm font-medium text-primary-foreground hover:bg-primary/90 transition-colors">
-                Continue shopping
+              <Link
+                to="/deals"
+                className="inline-flex items-center justify-center rounded-full bg-[#1d1d1f] px-7 py-3 text-[11px] font-semibold text-white transition-all duration-200 hover:bg-brand-blue active:scale-[0.98]"
+              >
+                Continue Shopping
               </Link>
             </div>
           </div>
         </section>
       </main>
+
       <SiteFooter />
       <WhatsAppFab />
     </div>

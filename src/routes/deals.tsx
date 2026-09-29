@@ -48,28 +48,7 @@ function DealsPage() {
     <div className="min-h-screen flex flex-col bg-background">
       <SiteHeader />
       <main className="flex-1">
-        {/* Hero */}
-        <section className="bg-brand-red text-white">
-          <div className="max-w-7xl mx-auto px-4 py-10">
-            <nav className="flex items-center gap-1.5 text-xs uppercase tracking-wider text-white/70 mb-3">
-              <Link to="/" className="hover:text-white">Home</Link>
-              <ChevronRight className="w-3.5 h-3.5" />
-              <span className="text-white">Hot Deals</span>
-            </nav>
-            <div className="flex items-center gap-3">
-              <Flame className="w-8 h-8 md:w-10 md:h-10" />
-              <h1 className="font-display text-4xl md:text-5xl font-bold uppercase tracking-tight">
-                Hot Deals
-              </h1>
-            </div>
-            <p className="text-white/85 mt-2 max-w-2xl text-sm md:text-base">
-              Limited-time offers on genuine, warrantied tech. Order on WhatsApp before stock runs out.
-            </p>
-            <div className="mt-4 text-xs font-bold tracking-wider text-brand-red bg-white inline-block px-3 py-1 rounded-full">
-              {products.length} {products.length === 1 ? "DEAL" : "DEALS"}
-            </div>
-          </div>
-        </section>
+
 
         <div className="max-w-7xl mx-auto px-4 py-10">
           {products.length === 0 ? (

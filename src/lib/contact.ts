@@ -3,7 +3,7 @@ export const CONTACT = {
   brandFull: "Briteman Services",
   brandLegal: "Briteman Services",
   tagline: "Eswatini's Trusted IT & Electronics Store",
-  phones: ["+268 7882 8760", "+268 7662 3730", "+268 7976 2221", "+268 3450 1703"],
+  phones: ["+268 7882 8760", "+268 7888 2850 ", "+268 7976 2221", "+268 3450 1703"],
   whatsappNumber: "26878828760",
   email: "ajapresd@gmail.com",
   website: "www.britemanservices.com",
@@ -12,7 +12,7 @@ export const CONTACT = {
     line1: "Unit No.10, First Floor, LM Building",
     line2: "Plot 305, Somhlolo Road",
     city: "Mbabane, Eswatini",
-  },
+  }, 
   locations: [
     {
       name: "Mbabane Branch",
@@ -20,7 +20,7 @@ export const CONTACT = {
       line2: "Plot 305, Somhlolo Road",
       city: "Mbabane, Eswatini",
       mapQuery: "LM+Building,+Plot+305,+Somhlolo+Road,+Mbabane,+Eswatini",
-      phones: ["+268 7882 8760", "+268 7662 3730", "+268 7976 2221", "+268 3450 1703"],
+      phones: ["+268 7882 8760", "+268 7888 2850", "+268 7976 2221", "+268 3450 1703"],
     },
     {
       name: "Manzini Branch",
@@ -28,12 +28,12 @@ export const CONTACT = {
       line2: "Ground Floor No. 9, Near Satellite Bus Rank",
       city: "Manzini, Eswatini",
       mapQuery: "Hyatt+Building+Complex,+217+Maphaka+Street,+Manzini,+Eswatini",
-      phones: ["+268 7882 8760", "+268 7888 2850", "+268 7928 8898"],
+      phones: ["+268 7882 8760", "+268 7888 2850 ", "+268 7976 2221", "+268 3450 1703"],
     },
   ],
   hours: [
-    { day: "Mon – Fri", time: "08:00 – 18:00" },
-    { day: "Saturday", time: "09:00 – 16:00" },
+    { day: "Mon – Fri", time: "08:00 – 17:00" },
+    { day: "Saturday", time: "09:00 – 13:00" },
     { day: "Sunday", time: "Closed" },
   ],
 };

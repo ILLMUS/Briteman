@@ -124,5 +124,5 @@ export function whatsappOrderLink(p: Product, branch = "Mbabane", opts?: { varia
     `Could you please confirm:\n` +
     `1. Is this item currently in stock at the ${branch} branch?\n` +
     `2. What is the estimated delivery time to my location from ${branch}?`;
-  return `https://wa.me/26876623733?text=${encodeURIComponent(msg)}`;
+  return `https://wa.me/26878828760?text=${encodeURIComponent(msg)}`;
 }

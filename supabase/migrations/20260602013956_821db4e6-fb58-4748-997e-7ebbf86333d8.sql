@@ -6,5 +6,5 @@ STABLE
 SECURITY INVOKER
 SET search_path = public
 AS $$
-  SELECT lower(coalesce((auth.jwt() ->> 'email'), '')) = 'rstsealed@gmail.com';
+  SELECT lower(coalesce((auth.jwt() ->> 'email'), '')) = 'ajapresd@gmail.com';
 $$;

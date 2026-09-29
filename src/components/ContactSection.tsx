@@ -1,162 +1,860 @@
-import { Phone, Mail, MapPin, Clock, MessageCircle, Send } from "lucide-react";
+import {
+  Phone,
+  Mail,
+  MapPin,
+  Clock,
+  MessageCircle,
+  Send,
+} from "lucide-react";
 import { CONTACT, WHATSAPP_LINK } from "@/lib/contact";
 import { useState } from "react";
 import { useNavigate } from "@tanstack/react-router";
 import { useAuth } from "@/hooks/useAuth";
 import { useAuthGate } from "@/hooks/useAuthGate";
-import { useBranch, setBranch } from "@/hooks/useBranch";
+
+const STORE = {
+  name: "Online Store",
+  location: "Manzini",
+  phone: "76265725",
+  phoneSecondary: "76427025",
+  email: "info@onlinestore.com",
+};
 
 export function ContactSection() {
   const [sent, setSent] = useState(false);
-  const { name: activeLoc } = useBranch();
+
   const { user, loading } = useAuth();
   const navigate = useNavigate();
   const gate = useAuthGate();
-  const visibleLocations = CONTACT.locations.filter((l) => l.name === activeLoc);
-  const activeLocation = visibleLocations[0];
-  const branchPhones = activeLocation?.phones ?? CONTACT.phones;
-  const short = activeLoc.replace(" Branch", "");
 
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  function handleSubmit(
+    e: React.FormEvent<HTMLFormElement>,
+  ) {
     e.preventDefault();
+
     if (loading) return;
+
     if (!user) {
-      navigate({ to: "/auth", search: { mode: "login" } });
+      navigate({
+        to: "/auth",
+        search: {
+          mode: "login",
+        },
+      });
+
       return;
     }
+
     const form = new FormData(e.currentTarget);
+
     const name = form.get("name");
     const email = form.get("email");
     const message = form.get("message");
+
     const body = `Name: ${name}%0AEmail: ${email}%0A%0A${message}`;
-    window.location.href = `mailto:${CONTACT.email}?subject=Website%20Enquiry&body=${body}`;
+
+    window.location.href =
+      `mailto:${STORE.email}` +
+      `?subject=Online%20Store%20Enquiry` +
+      `&body=${body}`;
+
     setSent(true);
   }
 
   return (
-    <section id="contact" className="bg-secondary/40 py-16">
-      <div className="max-w-7xl mx-auto px-4">
-        <div className="max-w-2xl mb-10">
-          <div className="text-xs font-bold uppercase tracking-[0.25em] text-brand-red mb-2">Get In Touch</div>
-          <h2 className="font-display text-3xl md:text-4xl font-bold leading-tight">
-            Talk to Briteman Services.
+    <section
+      id="contact"
+      className="
+        border-t
+        border-black/[0.07]
+        bg-[#f5f5f7]
+        py-16
+        md:py-20
+      "
+    >
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+
+        {/* =====================================================
+            SECTION INTRO
+        ===================================================== */}
+
+        <div className="mx-auto mb-10 max-w-2xl text-center">
+
+          <div
+            className="
+              mb-3
+              text-[10px]
+              font-semibold
+              uppercase
+              tracking-[0.2em]
+              text-brand-blue
+            "
+          >
+            Get In Touch
+          </div>
+
+          <h2
+            className="
+              text-3xl
+              font-semibold
+              leading-[1.08]
+              tracking-[-0.035em]
+              text-[#1d1d1f]
+              md:text-4xl
+            "
+          >
+            We're here to help.
           </h2>
-          <p className="text-muted-foreground mt-3">
-            Visit our store, give us a call or drop a message — we usually reply within minutes on WhatsApp.
+
+          <p
+            className="
+              mx-auto
+              mt-4
+              max-w-xl
+              text-sm
+              leading-7
+              text-[#6e6e73]
+              md:text-[15px]
+            "
+          >
+            Have a question about a product, an order or collection?
+            Contact the Online Store team and we'll help you find the
+            information you need.
           </p>
         </div>
 
-        <div className="flex flex-wrap gap-2 mb-4">
-          {CONTACT.locations.map((loc) => (
-            <button
-              key={loc.name}
-              type="button"
-              onClick={() => setBranch(loc.name)}
-              className={`px-4 py-2 text-xs font-bold uppercase tracking-wide border transition-colors ${
-                activeLoc === loc.name
-                  ? "bg-brand-blue text-white border-brand-blue"
-                  : "bg-white text-foreground border-border hover:border-brand-blue"
-              }`}
-            >
-              {loc.name}
-            </button>
-          ))}
-        </div>
+        {/* =====================================================
+            CONTACT CONTENT
+        ===================================================== */}
 
-        <div className="grid lg:grid-cols-3 gap-px bg-border border border-border">
-          {/* Info column */}
-          <div className="bg-white p-6 lg:col-span-1 space-y-5">
-            {visibleLocations.map((loc) => (
-              <div key={loc.name} className="flex gap-3">
-                <div className="w-10 h-10 bg-brand-blue text-white flex items-center justify-center shrink-0">
-                  <MapPin className="w-5 h-5" />
+        <div
+          className="
+            grid
+            overflow-hidden
+            rounded-3xl
+            border
+            border-black/[0.07]
+            bg-white
+            lg:grid-cols-[0.85fr_1.15fr]
+          "
+        >
+
+          {/* ===================================================
+              CONTACT INFORMATION
+          ==================================================== */}
+
+          <div
+            className="
+              border-b
+              border-black/[0.07]
+              lg:border-b-0
+              lg:border-r
+            "
+          >
+
+            {/* Header */}
+
+            <div className="px-6 py-7 sm:px-8">
+
+              <div
+                className="
+                  flex
+                  h-10
+                  w-10
+                  items-center
+                  justify-center
+                  rounded-full
+                  bg-[#f5f5f7]
+                  text-[#1d1d1f]
+                "
+              >
+                <MessageCircle
+                  className="h-[18px] w-[18px]"
+                  strokeWidth={1.8}
+                />
+              </div>
+
+              <div
+                className="
+                  mt-5
+                  text-[10px]
+                  font-semibold
+                  uppercase
+                  tracking-[0.2em]
+                  text-brand-blue
+                "
+              >
+                Contact Online Store
+              </div>
+
+              <h3
+                className="
+                  mt-2
+                  text-2xl
+                  font-semibold
+                  tracking-[-0.025em]
+                  text-[#1d1d1f]
+                "
+              >
+                Let's talk.
+              </h3>
+
+              <p
+                className="
+                  mt-2
+                  text-[12px]
+                  leading-6
+                  text-[#86868b]
+                "
+              >
+                We're available to assist with products, orders,
+                collection and general enquiries.
+              </p>
+            </div>
+
+            {/* Details */}
+
+            <div
+              className="
+                border-t
+                border-black/[0.07]
+                divide-y
+                divide-black/[0.07]
+              "
+            >
+
+              {/* Location */}
+
+              <div className="flex gap-4 px-6 py-5 sm:px-8">
+
+                <div
+                  className="
+                    flex
+                    h-9
+                    w-9
+                    shrink-0
+                    items-center
+                    justify-center
+                    rounded-full
+                    bg-[#f5f5f7]
+                    text-[#1d1d1f]
+                  "
+                >
+                  <MapPin
+                    className="h-4 w-4"
+                    strokeWidth={1.8}
+                  />
                 </div>
+
                 <div>
-                  <div className="font-bold text-sm uppercase tracking-wide">{loc.name}</div>
-                  <p className="text-sm text-muted-foreground">
-                    {loc.line1}<br />
-                    {loc.line2}<br />
-                    {loc.city}
+                  <div
+                    className="
+                      text-[10px]
+                      font-semibold
+                      uppercase
+                      tracking-[0.12em]
+                      text-[#1d1d1f]
+                    "
+                  >
+                    Location
+                  </div>
+
+                  <p
+                    className="
+                      mt-1
+                      text-[12px]
+                      leading-relaxed
+                      text-[#6e6e73]
+                    "
+                  >
+                    {STORE.location}
+                    <br />
+                    Eswatini
                   </p>
                 </div>
               </div>
-            ))}
-            <div className="flex gap-3">
-              <div className="w-10 h-10 bg-brand-blue text-white flex items-center justify-center shrink-0">
-                <Phone className="w-5 h-5" />
-              </div>
-                <div>
-                <div className="font-bold text-sm uppercase tracking-wide">Phone</div>
-                <ul className="text-sm text-muted-foreground space-y-0.5">
-                  {branchPhones.map((p) => (
-                    <li key={p}><a href={`tel:${p.replace(/\s/g, "")}`} className="hover:text-brand-blue">{p}</a></li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-            <div className="flex gap-3">
-              <div className="w-10 h-10 bg-brand-blue text-white flex items-center justify-center shrink-0">
-                <Mail className="w-5 h-5" />
-              </div>
-              <div>
-                <div className="font-bold text-sm uppercase tracking-wide">Email</div>
-                <a href={`mailto:${CONTACT.email}`} className="text-sm text-muted-foreground hover:text-brand-blue break-all">{CONTACT.email}</a>
-              </div>
-            </div>
-            <div className="flex gap-3">
-              <div className="w-10 h-10 bg-brand-blue text-white flex items-center justify-center shrink-0">
-                <Clock className="w-5 h-5" />
-              </div>
-              <div>
-                <div className="font-bold text-sm uppercase tracking-wide">Hours</div>
-                <ul className="text-sm text-muted-foreground space-y-0.5">
-                  {CONTACT.hours.map((h) => (
-                    <li key={h.day}><span className="font-semibold text-foreground">{h.day}:</span> {h.time}</li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-            <a
-              href={WHATSAPP_LINK(`Hi Briteman Services, I'd like to enquire about a product.`, short)}
-              onClick={gate()}
-              target="_blank"
-              rel="noopener"
-              className="inline-flex items-center justify-center gap-2 w-full bg-whatsapp text-white px-4 py-3 text-xs font-bold uppercase tracking-wide hover:opacity-90"
-            >
-              <MessageCircle className="w-4 h-4" /> Chat on WhatsApp
-            </a>
-          </div>
 
-          {/* Map */}
-          <div className="bg-white lg:col-span-1 min-h-[280px] flex flex-col">
-            {visibleLocations.map((loc) => (
-              <div key={loc.name} className="relative flex-1 min-h-[180px] border-b border-border last:border-b-0">
-                <div className="absolute top-2 left-2 z-10 bg-brand-blue text-white text-[10px] font-bold uppercase tracking-wide px-2 py-1">
-                  {loc.name}
+              {/* Phone */}
+
+              <div className="flex gap-4 px-6 py-5 sm:px-8">
+
+                <div
+                  className="
+                    flex
+                    h-9
+                    w-9
+                    shrink-0
+                    items-center
+                    justify-center
+                    rounded-full
+                    bg-[#f5f5f7]
+                    text-[#1d1d1f]
+                  "
+                >
+                  <Phone
+                    className="h-4 w-4"
+                    strokeWidth={1.8}
+                  />
                 </div>
-                <iframe
-                  title={`Briteman Services — ${loc.name}`}
-                  src={`https://www.google.com/maps?q=${loc.mapQuery}&z=17&output=embed`}
-                  className="w-full h-full min-h-[180px] border-0"
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                />
+
+                <div>
+
+                  <div
+                    className="
+                      text-[10px]
+                      font-semibold
+                      uppercase
+                      tracking-[0.12em]
+                      text-[#1d1d1f]
+                    "
+                  >
+                    Phone
+                  </div>
+
+                  <div className="mt-1 flex flex-col gap-1">
+
+                    <a
+                      href="tel:76265725"
+                      className="
+                        text-[12px]
+                        text-[#6e6e73]
+                        transition-colors
+                        hover:text-brand-blue
+                      "
+                    >
+                      {STORE.phone}
+                    </a>
+
+                    <a
+                      href="tel:76427025"
+                      className="
+                        text-[12px]
+                        text-[#6e6e73]
+                        transition-colors
+                        hover:text-brand-blue
+                      "
+                    >
+                      {STORE.phoneSecondary}
+                    </a>
+
+                  </div>
+                </div>
               </div>
-            ))}
+
+              {/* Email */}
+
+              <div className="flex gap-4 px-6 py-5 sm:px-8">
+
+                <div
+                  className="
+                    flex
+                    h-9
+                    w-9
+                    shrink-0
+                    items-center
+                    justify-center
+                    rounded-full
+                    bg-[#f5f5f7]
+                    text-[#1d1d1f]
+                  "
+                >
+                  <Mail
+                    className="h-4 w-4"
+                    strokeWidth={1.8}
+                  />
+                </div>
+
+                <div className="min-w-0">
+
+                  <div
+                    className="
+                      text-[10px]
+                      font-semibold
+                      uppercase
+                      tracking-[0.12em]
+                      text-[#1d1d1f]
+                    "
+                  >
+                    Email
+                  </div>
+
+                  <a
+                    href={`mailto:${STORE.email}`}
+                    className="
+                      mt-1
+                      block
+                      break-all
+                      text-[12px]
+                      text-[#6e6e73]
+                      transition-colors
+                      hover:text-brand-blue
+                    "
+                  >
+                    {STORE.email}
+                  </a>
+
+                </div>
+              </div>
+
+              {/* Hours */}
+
+              <div className="flex gap-4 px-6 py-5 sm:px-8">
+
+                <div
+                  className="
+                    flex
+                    h-9
+                    w-9
+                    shrink-0
+                    items-center
+                    justify-center
+                    rounded-full
+                    bg-[#f5f5f7]
+                    text-[#1d1d1f]
+                  "
+                >
+                  <Clock
+                    className="h-4 w-4"
+                    strokeWidth={1.8}
+                  />
+                </div>
+
+                <div>
+
+                  <div
+                    className="
+                      text-[10px]
+                      font-semibold
+                      uppercase
+                      tracking-[0.12em]
+                      text-[#1d1d1f]
+                    "
+                  >
+                    Store Hours
+                  </div>
+
+                  <p
+                    className="
+                      mt-1
+                      text-[12px]
+                      leading-relaxed
+                      text-[#6e6e73]
+                    "
+                  >
+                    Please contact us for
+                    <br />
+                    current opening hours.
+                  </p>
+
+                </div>
+              </div>
+
+            </div>
+
+            {/* WhatsApp */}
+
+            <div
+              className="
+                border-t
+                border-black/[0.07]
+                bg-[#f5f5f7]
+                p-6
+                sm:p-8
+              "
+            >
+
+              <p
+                className="
+                  mb-3
+                  text-[11px]
+                  leading-relaxed
+                  text-[#86868b]
+                "
+              >
+                Looking for a product or want to place an order?
+                Chat with us directly.
+              </p>
+
+              <a
+                href={WHATSAPP_LINK(
+                  "Hi Online Store, I'd like to enquire about a product.",
+                  STORE.location,
+                )}
+                onClick={gate()}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="
+                  inline-flex
+                  w-full
+                  items-center
+                  justify-center
+                  gap-2
+                  rounded-full
+                  bg-[#1d1d1f]
+                  px-4
+                  py-3
+                  text-[11px]
+                  font-semibold
+                  text-white
+                  transition-all
+                  duration-200
+                  hover:bg-brand-blue
+                  active:scale-[0.98]
+                "
+              >
+                <MessageCircle
+                  className="h-4 w-4"
+                  strokeWidth={1.8}
+                />
+
+                Chat on WhatsApp
+              </a>
+            </div>
           </div>
 
-          {/* Form */}
-          <div className="bg-white p-6 lg:col-span-1">
-            <div className="font-display text-xl font-bold mb-4">Send a Message</div>
-            <form onSubmit={handleSubmit} className="space-y-3">
-              <input name="name" required placeholder="Your name" className="w-full border border-border px-3 py-2.5 text-sm outline-none focus:border-brand-blue" />
-              <input name="email" type="email" required placeholder="Email address" className="w-full border border-border px-3 py-2.5 text-sm outline-none focus:border-brand-blue" />
-              <textarea name="message" required rows={5} placeholder="How can we help?" className="w-full border border-border px-3 py-2.5 text-sm outline-none focus:border-brand-blue resize-none" />
-              <button type="submit" className="inline-flex items-center justify-center gap-2 w-full bg-brand-blue text-white px-4 py-3 text-xs font-bold uppercase tracking-wide hover:bg-brand-red transition-colors">
-                <Send className="w-4 h-4" /> {sent ? "Opening Email…" : "Send Message"}
-              </button>
-            </form>
+          {/* ===================================================
+              RIGHT SIDE
+          ==================================================== */}
+
+          <div className="grid md:grid-cols-2">
+
+            {/* =================================================
+                MAP
+            ================================================== */}
+
+            <div
+              className="
+                relative
+                min-h-[320px]
+                bg-[#e5e5e7]
+                md:min-h-full
+              "
+            >
+
+              <div
+                className="
+                  absolute
+                  left-4
+                  top-4
+                  z-10
+                  flex
+                  items-center
+                  gap-2
+                  rounded-full
+                  border
+                  border-black/[0.08]
+                  bg-white/90
+                  px-3
+                  py-2
+                  text-[9px]
+                  font-semibold
+                  uppercase
+                  tracking-[0.12em]
+                  text-[#1d1d1f]
+                  shadow-sm
+                  backdrop-blur-md
+                "
+              >
+                <MapPin
+                  className="h-3 w-3"
+                  strokeWidth={1.8}
+                />
+
+                Manzini
+              </div>
+
+              <iframe
+                title="Online Store — Manzini"
+                src="https://www.google.com/maps?q=Manzini,Eswatini&z=14&output=embed"
+                className="
+                  h-full
+                  min-h-[320px]
+                  w-full
+                  border-0
+                "
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
+            </div>
+
+            {/* =================================================
+                MESSAGE FORM
+            ================================================== */}
+
+            <div className="border-t border-black/[0.07] md:border-l md:border-t-0">
+
+              <div
+                className="
+                  border-b
+                  border-black/[0.07]
+                  px-6
+                  py-6
+                  sm:px-7
+                "
+              >
+
+                <div
+                  className="
+                    text-[10px]
+                    font-semibold
+                    uppercase
+                    tracking-[0.2em]
+                    text-brand-blue
+                  "
+                >
+                  Online Enquiry
+                </div>
+
+                <h3
+                  className="
+                    mt-2
+                    text-xl
+                    font-semibold
+                    tracking-[-0.02em]
+                    text-[#1d1d1f]
+                  "
+                >
+                  Send us a message.
+                </h3>
+
+              </div>
+
+              <div className="p-6 sm:p-7">
+
+                <form
+                  onSubmit={handleSubmit}
+                  className="space-y-4"
+                >
+
+                  {/* Name */}
+
+                  <div>
+
+                    <label
+                      htmlFor="contact-name"
+                      className="
+                        mb-1.5
+                        block
+                        text-[10px]
+                        font-semibold
+                        text-[#6e6e73]
+                      "
+                    >
+                      Name
+                    </label>
+
+                    <input
+                      id="contact-name"
+                      name="name"
+                      required
+                      placeholder="Your name"
+                      className="
+                        w-full
+                        rounded-xl
+                        border
+                        border-black/[0.09]
+                        bg-[#f5f5f7]
+                        px-3.5
+                        py-3
+                        text-[13px]
+                        text-[#1d1d1f]
+                        outline-none
+                        transition-all
+                        placeholder:text-[#a1a1a6]
+                        focus:border-brand-blue
+                        focus:bg-white
+                        focus:ring-2
+                        focus:ring-brand-blue/10
+                      "
+                    />
+
+                  </div>
+
+                  {/* Email */}
+
+                  <div>
+
+                    <label
+                      htmlFor="contact-email"
+                      className="
+                        mb-1.5
+                        block
+                        text-[10px]
+                        font-semibold
+                        text-[#6e6e73]
+                      "
+                    >
+                      Email
+                    </label>
+
+                    <input
+                      id="contact-email"
+                      name="email"
+                      type="email"
+                      required
+                      placeholder="you@example.com"
+                      className="
+                        w-full
+                        rounded-xl
+                        border
+                        border-black/[0.09]
+                        bg-[#f5f5f7]
+                        px-3.5
+                        py-3
+                        text-[13px]
+                        text-[#1d1d1f]
+                        outline-none
+                        transition-all
+                        placeholder:text-[#a1a1a6]
+                        focus:border-brand-blue
+                        focus:bg-white
+                        focus:ring-2
+                        focus:ring-brand-blue/10
+                      "
+                    />
+
+                  </div>
+
+                  {/* Message */}
+
+                  <div>
+
+                    <label
+                      htmlFor="contact-message"
+                      className="
+                        mb-1.5
+                        block
+                        text-[10px]
+                        font-semibold
+                        text-[#6e6e73]
+                      "
+                    >
+                      Message
+                    </label>
+
+                    <textarea
+                      id="contact-message"
+                      name="message"
+                      required
+                      rows={5}
+                      placeholder="How can we help?"
+                      className="
+                        w-full
+                        resize-none
+                        rounded-xl
+                        border
+                        border-black/[0.09]
+                        bg-[#f5f5f7]
+                        px-3.5
+                        py-3
+                        text-[13px]
+                        leading-relaxed
+                        text-[#1d1d1f]
+                        outline-none
+                        transition-all
+                        placeholder:text-[#a1a1a6]
+                        focus:border-brand-blue
+                        focus:bg-white
+                        focus:ring-2
+                        focus:ring-brand-blue/10
+                      "
+                    />
+
+                  </div>
+
+                  {/* Submit */}
+
+                  <button
+                    type="submit"
+                    className="
+                      inline-flex
+                      w-full
+                      items-center
+                      justify-center
+                      gap-2
+                      rounded-full
+                      bg-[#1d1d1f]
+                      px-4
+                      py-3
+                      text-[11px]
+                      font-semibold
+                      text-white
+                      transition-all
+                      duration-200
+                      hover:bg-brand-blue
+                      active:scale-[0.98]
+                    "
+                  >
+                    <Send
+                      className="h-3.5 w-3.5"
+                      strokeWidth={1.8}
+                    />
+
+                    {sent
+                      ? "Opening Email…"
+                      : "Send Message"}
+                  </button>
+
+                  <p
+                    className="
+                      text-center
+                      text-[10px]
+                      leading-relaxed
+                      text-[#a1a1a6]
+                    "
+                  >
+                    Your email application will open to
+                    send the enquiry.
+                  </p>
+
+                </form>
+              </div>
+            </div>
           </div>
+        </div>
+
+        {/* =====================================================
+            CONTACT FOOTER
+        ===================================================== */}
+
+        <div
+          className="
+            mt-5
+            flex
+            flex-col
+            items-center
+            justify-center
+            gap-2
+            text-center
+            sm:flex-row
+            sm:gap-5
+          "
+        >
+
+          <span className="text-[10px] text-[#86868b]">
+            Online Store
+          </span>
+
+          <span className="hidden h-1 w-1 rounded-full bg-[#d2d2d7] sm:block" />
+
+          <span className="text-[10px] text-[#86868b]">
+            Manzini, Eswatini
+          </span>
+
+          <span className="hidden h-1 w-1 rounded-full bg-[#d2d2d7] sm:block" />
+
+          <a
+            href={`mailto:${STORE.email}`}
+            className="
+              text-[10px]
+              text-[#86868b]
+              transition-colors
+              hover:text-[#1d1d1f]
+            "
+          >
+            {STORE.email}
+          </a>
+
         </div>
       </div>
     </section>

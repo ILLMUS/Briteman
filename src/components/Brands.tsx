@@ -1,63 +1,102 @@
-import { SiHuawei, SiSamsung, SiDell, SiApple, SiAsus, SiBeatsbydre, SiJbl, SiAndroid, SiAcer, SiLenovo, SiHp, SiLg, SiSony, SiXiaomi } from "react-icons/si";
+import {
+  Smartphone,
+  Laptop,
+  Tv,
+  Refrigerator,
+  CookingPot,
+  Printer,
+  Headphones,
+  Watch,
+  Gamepad2,
+  WashingMachine,
+  Microwave,
+  Camera,
+} from "lucide-react";
 
-// Official simple-icons brand colors — intentionally literal hex values
-// because these are third-party brand marks, not themeable UI colors.
-const BRANDS = [
-  { Icon: SiHuawei, name: "Huawei", color: "#FF0000" },
-  { Icon: SiSamsung, name: "Samsung", color: "#1428A0" },
-  { Icon: SiDell, name: "Dell", color: "#007DB8" },
-  { Icon: SiApple, name: "Apple", color: "#000000" },
-  { Icon: SiAsus, name: "ASUS", color: "#000000" },
-  { Icon: SiBeatsbydre, name: "Beats", color: "#E01F3D" },
-  { Icon: SiJbl, name: "JBL", color: "#FF3300" },
-  { Icon: SiAndroid, name: "Android", color: "#34A853" },
-  { Icon: SiAcer, name: "Acer", color: "#83B81A" },
-  { Icon: SiLenovo, name: "Lenovo", color: "#E2231A" },
-  { Icon: SiHp, name: "HP", color: "#0096D6" },
-  { Icon: SiLg, name: "LG", color: "#A50034" },
-  { Icon: SiSony, name: "Sony", color: "#000000" },
-  { Icon: SiXiaomi, name: "Xiaomi", color: "#FF6900" },
+const CATEGORIES = [
+  { Icon: Smartphone, name: "Smartphones" },
+  { Icon: Laptop, name: "Laptops & Computers" },
+  { Icon: Tv, name: "Televisions" },
+  { Icon: Refrigerator, name: "Fridges & Freezers" },
+  { Icon: CookingPot, name: "Stoves & Cookers" },
+  { Icon: Printer, name: "Printers" },
+  { Icon: Headphones, name: "Audio & Headphones" },
+  { Icon: Watch, name: "Smartwatches" },
+  { Icon: Gamepad2, name: "Gaming" },
+  { Icon: WashingMachine, name: "Washing Machines" },
+  { Icon: Microwave, name: "Microwaves" },
+  { Icon: Camera, name: "Cameras" },
 ];
 
 export function Brands() {
-  // duplicate the list so the marquee loops seamlessly
-  const loop = [...BRANDS, ...BRANDS];
+  const loop = [...CATEGORIES, ...CATEGORIES];
 
   return (
-    <section className="bg-white py-10 border-b border-border overflow-hidden">
+    <section className="bg-white py-12 border-b border-gray-100 overflow-hidden">
+      <div className="max-w-7xl mx-auto px-6 mb-8 text-center">
+        <p className="text-sm font-semibold uppercase tracking-[0.2em] text-gray-500 mb-2">
+          Explore Our Products
+        </p>
+        <h2 className="text-2xl md:text-3xl font-bold text-gray-900">
+          Everything You Need, All in One Place
+        </h2>
+        <p className="mt-2 text-sm text-gray-500">
+          Discover electronics, appliances and accessories.
+        </p>
+      </div>
 
       <div
         className="relative w-full"
         style={{
-          maskImage: "linear-gradient(to right, transparent, black 8%, black 92%, transparent)",
-          WebkitMaskImage: "linear-gradient(to right, transparent, black 8%, black 92%, transparent)",
+          maskImage:
+            "linear-gradient(to right, transparent, black 5%, black 95%, transparent)",
+          WebkitMaskImage:
+            "linear-gradient(to right, transparent, black 5%, black 95%, transparent)",
         }}
       >
-        <div className="flex gap-14 md:gap-20 animate-brand-marquee w-max">
-          {loop.map(({ Icon, name, color }, i) => (
+        <div className="flex gap-5 w-max animate-category-marquee hover:[animation-play-state:paused]">
+          {loop.map(({ Icon, name }, i) => (
             <div
               key={`${name}-${i}`}
-              className="shrink-0 flex items-center justify-center transition-transform hover:scale-110"
-              title={name}
-              aria-label={name}
+              className="group flex flex-col items-center justify-center
+                gap-3 w-36 h-36 md:w-40 md:h-40 shrink-0
+                rounded-2xl border border-gray-100 bg-white
+                shadow-sm transition-all duration-300
+                hover:-translate-y-1 hover:shadow-lg
+                hover:border-orange-300"
             >
-              <Icon className="w-12 h-12 md:w-14 md:h-14" style={{ color }} />
+              <div
+                className="flex items-center justify-center
+                  w-14 h-14 rounded-xl bg-gray-50
+                  text-gray-700 transition-all duration-300
+                  group-hover:bg-orange-500
+                  group-hover:text-white"
+              >
+                <Icon size={30} strokeWidth={1.7} />
+              </div>
+
+              <span className="text-xs md:text-sm font-semibold text-gray-700 text-center px-2">
+                {name}
+              </span>
             </div>
           ))}
         </div>
       </div>
 
       <style>{`
-        @keyframes brand-marquee {
+        @keyframes category-marquee {
           from { transform: translateX(0); }
-          to   { transform: translateX(-50%); }
+          to { transform: translateX(-50%); }
         }
-        .animate-brand-marquee {
-          animation: brand-marquee 35s linear infinite;
+
+        .animate-category-marquee {
+          animation: category-marquee 40s linear infinite;
         }
-        .animate-brand-marquee:hover { animation-play-state: paused; }
+
         @media (prefers-reduced-motion: reduce) {
-          .animate-brand-marquee { animation: none; }
+          .animate-category-marquee {
+            animation: none;
+          }
         }
       `}</style>
     </section>
